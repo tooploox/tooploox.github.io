@@ -51,18 +51,14 @@ Here we see, that package name for twitter is `com.twitter.android`.
 Let's see the code, that will go through all installed apps on the device and check if given packages are avaliable. For further usage, we'll write it in a way, that it returns list of matching `ResolveInfo` objects.
  
 ```java
-static Collection<ResolveInfo> findMatchingResolveInfo(
-                        PackageManager pm, 
-                        Intent messageIntent, 
-                        String... lookupPackages) {
-    List<ResolveInfo> resInfo = pm.queryIntentActivities(messageIntent, 0);
+static Collection<ResolveInfo> findMatchingResolveInfo(PackageManager pm, Intent messageIntent, String... lookupPackages) {
+    Collection<ResolveInfo> resInfo = findAllMatching(pm, messageIntent);
     Collection<ResolveInfo> matchingResInfo = new HashSet<>(resInfo.size());
-    for (int i = 0; i < resInfo.size(); i++) {
-        ResolveInfo ri = resInfo.get(i);
-        String packageName = ri.activityInfo.packageName;
+    for (ResolveInfo resolveInfo : resInfo) {
+        String packageName = resolveInfo.activityInfo.packageName;
         for (String lookupPackage : lookupPackages) {
             if (packageName.contains(lookupPackage)) {
-                matchingResInfo.add(ri);
+                matchingResInfo.add(resolveInfo);
                 break;
             }
         }
@@ -90,10 +86,10 @@ static Intent filterSendAction(PackageManager pm, Intent messageIntent, String..
     Collection<ResolveInfo> matchingResInfo = findMatchingResolveInfo(pm, messageIntent, lookupPackages);
 
     if (!matchingResInfo.isEmpty()) {
-        List<LabeledIntent> intentList = new ArrayList<>();
         if (matchingResInfo.size() == 1) {
             messageIntent.setPackage(matchingResInfo.iterator().next().activityInfo.packageName);
         } else {
+            List<LabeledIntent> intentList = new ArrayList<>();
             for (ResolveInfo resolveInfo : matchingResInfo) {
                 Intent intent = new Intent(messageIntent);
                 ActivityInfo activityInfo = resolveInfo.activityInfo;
