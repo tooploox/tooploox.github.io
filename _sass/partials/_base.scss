@@ -74,3 +74,7 @@ strong {
 .text-left {
   text-align: left;
 }
+
+.container {
+  @include outer-container;
+}
