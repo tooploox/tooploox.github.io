@@ -1,0 +1,31 @@
+$footerBgColor: #0c0f1f;
+$footerHeight: 270px;
+
+.wrapper {
+  position: relative;
+  min-height: 100%;
+  @include media($largerThanXS) {
+    padding-bottom: $footerHeight;
+  }
+}
+
+footer {
+  width: 100%;
+  height: $footerHeight;
+  background-color: $footerBgColor;
+  @include media($largerThanXS) {
+    position: absolute;
+    bottom: 0;
+  }
+  @include media($xsScreen) {
+    height: auto;
+  }
+}
+
+.logo-footer {
+  margin-top: 60px;
+  display: inline-block;
+  @include media($xsScreen) {
+    padding: 35px 0 20px;
+  }
+}

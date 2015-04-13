@@ -1,0 +1,8 @@
+$phonePortrait:    new-breakpoint(max-width 320px 12);
+$phoneLandscape:   new-breakpoint(max-width 480px 12);
+$xsScreen:         new-breakpoint(max-width 767px 12);
+$largerThanXS:     new-breakpoint(min-width 768px 12);
+$mediumScreen:     new-breakpoint(max-width 1100px 12);
+$smScreen:         new-breakpoint(min-width 992px 12);
+$navMdScreen:      new-breakpoint(max-width 920px 12);
+$ipadLandscape:    new-breakpoint(min-width 767px max-width 1024px orientation landscape 12);

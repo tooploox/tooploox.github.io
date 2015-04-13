@@ -8,6 +8,10 @@
 @import "vendor/bourbon/bourbon";
 @import "vendor/neat/neat";
 
+//variables
+@import "variables/breakpoints";
+
 //partials
 @import "partials/base";
-
+@import "partials/nav";
+@import "partials/footer";
