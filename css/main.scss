@@ -11,6 +11,10 @@
 //variables
 @import "variables/breakpoints";
 
+//mixins
+@import "mixins/fonts";
+@import "mixins/positioning";
+
 //partials
 @import "partials/base";
 @import "partials/nav";

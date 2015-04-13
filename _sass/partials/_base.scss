@@ -1,0 +1,76 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+@include font-face(Montserrat-Light);
+@include font-face(Montserrat-Bold);
+@include font-face(Montserrat-Regular);
+
+$baseLinkColor: #8d0bc9;
+$h1Color: #281347;
+
+* {
+  font-family: 'Montserrat-Light', sans-serif;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+a {
+  font-family: 'Montserrat-Regular', sans-serif;
+  text-decoration: none;
+  color: $baseLinkColor;
+}
+
+.outer {
+  width: 100%;
+  display: table;
+  > div {
+    @include outer-container;
+  }
+}
+
+.inverse {
+  color: white;
+}
+
+h1 {
+  font-size: 60px;
+  color: $h1Color;
+  margin: 20px 0;
+  line-height: 1.5;
+}
+
+h3 {
+  font-size: 30px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.clear {
+  clear: both;
+}
+
+strong {
+  font-family: 'Montserrat-Regular', sans-serif;
+}
+
+.hidden {
+  display: none!important;
+  visibility: hidden;
+}
+
+.text-left {
+  text-align: left;
+}

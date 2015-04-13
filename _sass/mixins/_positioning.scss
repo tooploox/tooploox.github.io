@@ -1,0 +1,8 @@
+@mixin centerVertically ($centeredChild, $height: 100%) {
+  height: $height;
+  display: table!important;
+  #{$centeredChild} {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
