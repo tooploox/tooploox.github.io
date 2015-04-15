@@ -83,3 +83,6 @@ strong {
   @include outer-container;
 }
 
+a[disabled] {
+  pointer-events: none;
+}
