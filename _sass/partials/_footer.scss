@@ -25,7 +25,9 @@ footer {
 .logo-footer {
   margin-top: 60px;
   display: inline-block;
+  width: 50px;
+  height: 50px;
   @include media($xsScreen) {
-    padding: 35px 0 20px;
+    margin-bottom: 35px;
   }
 }

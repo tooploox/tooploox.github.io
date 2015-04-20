@@ -11,6 +11,7 @@ nav {
     text-transform: uppercase;
     border-radius: 6px;
     display: inline-block;
+    @include transition(all 0.1s ease-in-out);
     &:not(:last-child) {
       margin-right: 5px;
     }
@@ -70,11 +71,22 @@ nav {
   }
 }
 
-.sticky-logo {
+.sticky-logo-container {
   float: left;
   padding: 20px 0;
+
   @include media($xsScreen) {
-    padding: 12px 0;
+    padding: 5px 0;
+  }
+}
+
+.sticky-logo {
+  width: 51px;
+  height: 51px;
+  display: inline-block;
+  @include media($xsScreen) {
+    width: 31px;
+    height: 31px;
   }
 }
 
@@ -91,20 +103,18 @@ nav {
   @include media($xsScreen) {
     display: block;
   }
-    img {
-      &.sticky-tp {
-        width: 225px;
-        height: auto;
-        vertical-align: top;
-        padding: {
-          top: 20px;
-          left: 15px;
-        }
-        @include media($navMdScreen) {
-          display: none;
-        }
-      }
+  .sticky-tp {
+    width: 225px;
+    vertical-align: top;
+    display: inline-block;
+    height: 20px;
+    position: relative;
+    top: 18px;
+    left: 15px;
+    @include media($navMdScreen) {
+      display: none;
     }
+  }
   .container {
     padding: {
       left: 15px;
@@ -117,17 +127,17 @@ nav {
   display: inline-block;
   width: 35px;
   float: right;
-  padding: 25px 0;
+  padding: 10px 0;
   cursor: pointer;
   @include media($largerThanXS) {
     display: none;
   }
   span {
-    border-top: 4px solid white;
+    border-top: 3px solid white;
     width: 100%;
     display: block;
     &:not(:last-child) {
-      padding-bottom: 8px;
+      padding-bottom: 7px;
     }
   }
 }
