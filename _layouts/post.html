@@ -9,6 +9,21 @@ layout: default
                 <img src="{{ page.post-image }}"/>
             </div>
             {% endif %}
+            {% if page.author %}
+            <div class="post-author-container">
+                <div class="author">
+                    <img src="/images/authors/{{ page.author }}.jpg"/>
+                    <h2>{{ site.data.authors[page.author]['name'] }}</h2>
+                </div>
+                <div class="post-text">
+                    <span class="date">{{ page.date | date: '%B %d, %Y' }}</span>
+                    <h2>{{ page.title }}</h2>
+                    <div class="text-justify">
+                        {{ content }}
+                    </div>
+                </div>
+            </div>
+            {% else %}
             <div class="post-text">
                 <span class="date">{{ page.date | date: '%B %d, %Y' }}</span>
                 <h2>{{ page.title }}</h2>
@@ -16,6 +31,7 @@ layout: default
                     {{ content }}
                 </div>
             </div>
+            {% endif %}
         </div>
     </div>
 </div>
