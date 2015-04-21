@@ -15,20 +15,32 @@ layout: default
                     <img src="/images/authors/{{ page.author }}.jpg"/>
                     <h2>{{ site.data.authors[page.author]['name'] }}</h2>
                     {% if site.data.authors[page.author]['github'] %}
-                    <a href="https://github.com/{{ site.data.authors[page.author]['github'] }}" class="author-social icon-github" target="_blank"></a>
+                    <a href="https://github.com/{{ site.data.authors[page.author]['github'] }}" class="author-social" target="_blank">
+                        <i class="fa fa-github"></i>
+                    </a>
                     {% endif %}
                     {% if site.data.authors[page.author]['facebook'] %}
-                    <a href="https://facebook.com/{{ site.data.authors[page.author]['facebook'] }}" class="author-social icon-fb" target="_blank"></a>
+                    <a href="https://facebook.com/{{ site.data.authors[page.author]['facebook'] }}" class="author-social" target="_blank">
+                        <i class="fa fa-facebook-official"></i>
+                    </a>
                     {% endif %}
                     {% if site.data.authors[page.author]['twitter'] %}
-                    <a href="https://twitter.com/{{ site.data.authors[page.author]['twitter'] }}" class="author-social icon-twitter" target="_blank"></a>
+                    <a href="https://twitter.com/{{ site.data.authors[page.author]['twitter'] }}" class="author-social" target="_blank">
+                        <i class="fa fa-twitter"></i>
+                    </a>
                     {% endif %}
                     {% else %}
                     <img src="/images/authors/{{ site.data.authors.default.name }}.png"/>
                     <h2>{{ site.data.authors.default.name }}</h2>
-                    <a href="https://github.com/{{ site.data.authors.default.github }}" class="author-social icon-github" target="_blank"></a>
-                    <a href="https://facebook.com/{{ site.data.authors.default.facebook }}" class="author-social icon-fb" target="_blank"></a>
-                    <a href="https://twitter.com/{{ site.data.authors.default.twitter }}" class="author-social icon-twitter" target="_blank"></a>
+                    <a href="https://github.com/{{ site.data.authors.default.github }}" class="author-social" target="_blank">
+                        <i class="fa fa-github"></i>
+                    </a>
+                    <a href="https://facebook.com/{{ site.data.authors.default.facebook }}" class="author-social" target="_blank">
+                        <i class="fa fa-facebook-official"></i>
+                    </a>
+                    <a href="https://twitter.com/{{ site.data.authors.default.twitter }}" class="author-social" target="_blank">
+                        <i class="fa fa-twitter"></i>
+                    </a>
                     {% endif %}
                 </div>
                 <div class="post-text">
