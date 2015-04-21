@@ -14,6 +14,15 @@ layout: default
                 <div class="author">
                     <img src="/images/authors/{{ page.author }}.jpg"/>
                     <h2>{{ site.data.authors[page.author]['name'] }}</h2>
+                    {% if site.data.authors[page.author]['github'] %}
+                    <a href="https://github.com/{{ site.data.authors[page.author]['github'] }}" class="author-social icon-github" target="_blank"></a>
+                    {% endif %}
+                    {% if site.data.authors[page.author]['facebook'] %}
+                    <a href="https://facebook.com/{{ site.data.authors[page.author]['facebook'] }}" class="author-social icon-fb" target="_blank"></a>
+                    {% endif %}
+                    {% if site.data.authors[page.author]['twitter'] %}
+                    <a href="https://twitter.com/{{ site.data.authors[page.author]['twitter'] }}" class="author-social icon-twitter" target="_blank"></a>
+                    {% endif %}
                 </div>
                 <div class="post-text">
                     <span class="date">{{ page.date | date: '%B %d, %Y' }}</span>
