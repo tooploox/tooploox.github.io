@@ -9,9 +9,9 @@ layout: default
                 <img src="{{ page.post-image }}"/>
             </div>
             {% endif %}
-            {% if page.author %}
             <div class="post-author-container">
                 <div class="author">
+                    {% if page.author %}
                     <img src="/images/authors/{{ page.author }}.jpg"/>
                     <h2>{{ site.data.authors[page.author]['name'] }}</h2>
                     {% if site.data.authors[page.author]['github'] %}
@@ -23,6 +23,13 @@ layout: default
                     {% if site.data.authors[page.author]['twitter'] %}
                     <a href="https://twitter.com/{{ site.data.authors[page.author]['twitter'] }}" class="author-social icon-twitter" target="_blank"></a>
                     {% endif %}
+                    {% else %}
+                    <img src="/images/authors/{{ site.data.authors.default.name }}.png"/>
+                    <h2>{{ site.data.authors.default.name }}</h2>
+                    <a href="https://github.com/{{ site.data.authors.default.github }}" class="author-social icon-github" target="_blank"></a>
+                    <a href="https://facebook.com/{{ site.data.authors.default.facebook }}" class="author-social icon-fb" target="_blank"></a>
+                    <a href="https://twitter.com/{{ site.data.authors.default.twitter }}" class="author-social icon-twitter" target="_blank"></a>
+                    {% endif %}
                 </div>
                 <div class="post-text">
                     <span class="date">{{ page.date | date: '%B %d, %Y' }}</span>
@@ -32,15 +39,6 @@ layout: default
                     </div>
                 </div>
             </div>
-            {% else %}
-            <div class="post-text">
-                <span class="date">{{ page.date | date: '%B %d, %Y' }}</span>
-                <h2>{{ page.title }}</h2>
-                <div class="text-justify">
-                    {{ content }}
-                </div>
-            </div>
-            {% endif %}
         </div>
     </div>
 </div>
