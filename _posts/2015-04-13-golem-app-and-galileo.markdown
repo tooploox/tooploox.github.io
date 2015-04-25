@@ -2,7 +2,7 @@
 layout: post
 title:  "Supercharge your meetings with Golem app and Galileo"
 date:   April 13, 2015
-post-image: /images/blog/golem.png
+post-image: /images/posts/golem.png
 categories: jekyll update
 ---
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut

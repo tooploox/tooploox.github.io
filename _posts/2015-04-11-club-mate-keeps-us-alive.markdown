@@ -2,7 +2,7 @@
 layout: post
 title:  "Club-Mate - It keeps us alive"
 date:   April 11, 2015
-post-image: /images/blog/club-mate.png
+post-image: /images/posts/club-mate.png
 author: krzysztof-tarnowski
 categories: jekyll update
 ---
