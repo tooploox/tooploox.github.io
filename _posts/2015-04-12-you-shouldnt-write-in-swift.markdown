@@ -2,7 +2,7 @@
 layout: post
 title:  "Maybe you shouldn't write in Swift?"
 date:   April 12, 2015
-author: karol
+author: karol-kubicki
 categories: jekyll update
 ---
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut

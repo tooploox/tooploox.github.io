@@ -4,37 +4,37 @@ default:
   twitter: tooploox
   facebook: tooploox
 
-karol:
+karol-kubicki:
   name: Karol Kubicki
   github: karolus
   twitter: kar_kub
   facebook: kar.kub
 
-gienek:
+eugeniusz-keptia:
   name: Eugeniusz Keptia
   github: eugeniuszkeptia
   twitter:
   facebook: eugeniusz.keptia
 
-damian:
+damian-walczak:
   name: Damian Walczak
   github: veelck
   twitter:
   facebook: veelck1500
 
-krzysiek:
+krzysztof-tarnowski:
   name: Krzysztof Tarnowski
   github: christarnowski
-  twitter:
+  twitter: christarnowski
   facebook: krzysztof.tarnowski
 
-pawel:
+pawel-solyga:
   name: Paweł Sołyga
   github: solydzajs
   twitter:
   facebook: pawel.solyga
 
-tomek:
+tomasz-dziergwa:
   name: Tomasz Dziergwa
   github: tomekdz
   twitter:
