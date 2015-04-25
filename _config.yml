@@ -1,9 +1,11 @@
 # Site settings
-title: Tooploox &mdash; mobile apps development
+title: Tooploox Blog &mdash; software, business and new technologies
 email: hello@tooploox.com
 description: > # this means to ignore newlines until "baseurl:"
-     Clean and beautiful design, great user experience and simplicity is in our DNA.
-     We work with plethora of technologies, most notably iOS, Android, Python and Node.js.
+    A blog by Tooploox – a software house established to help both startups and
+    large companies build great products using modern technology. We got you
+    covered when it comes to developing amazing mobile apps (iOS, Android),
+    gorgeous web apps or complex back-end systems (Node.js, Python, Ruby).
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://blog.tooploox.com" # the base hostname & protocol for your site
 
