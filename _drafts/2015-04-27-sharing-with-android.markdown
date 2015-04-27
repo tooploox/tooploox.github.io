@@ -2,7 +2,7 @@
 layout: post
 title:  "Sharing content on Android - made simple"
 date:   April 27, 2015
-post-image: /images/posts/club-mate.png
+post-image: /images/posts/android-sharing.png
 author: damian-walczak
 categories: android programming
 ---
