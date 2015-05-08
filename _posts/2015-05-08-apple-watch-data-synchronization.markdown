@@ -20,9 +20,9 @@ So we simply want to send Contact object. Here's how Contact model looks like:
 
     final class Contact: NSObject {
     
-        let firstName: String!
-        let lastName: String!
-        let phoneNumber: String!
+        let firstName: String
+        let lastName: String
+        let phoneNumber: String
     
         init(firstName: String, lastName: String, phoneNumber: String) {
             self.firstName = firstName
@@ -75,8 +75,8 @@ I've created a WatchKitDataManager class responsible of sending and reading mess
     
         func readContact() -> Contact? {
             NSKeyedUnarchiver.setClass(Contact.self, forClassName:"contact")
-            if let unwrappedContact = wormhole.messageWithIdentifier(contactClassName) as? Contact {
-                return unwrappedContact
+            if let contact = wormhole.messageWithIdentifier(contactClassName) as? Contact {
+                return contact
             }
             return nil
         }
