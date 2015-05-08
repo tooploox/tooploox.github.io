@@ -59,11 +59,11 @@ Also we need to specify unique keys used by a Contact object to encode or decode
 
 To do so, we need to put this line of code before we try to send message through wormhole
 
-    NSKeyedArchiver.setClassName("Contact", forClass:Contact.self)
+    NSKeyedArchiver.setClassName("Contact", forClass: Contact.self)
     
 and this one before we try to read message from wormhole
     
-    NSKeyedUnarchiver.setClass(Contact.self, forClassName:"Contact")
+    NSKeyedUnarchiver.setClass(Contact.self, forClassName: "Contact")
 
 Otherwise we'll receive the following error:
 
@@ -75,15 +75,17 @@ I've created a WatchKitDataManager class responsible of sending and reading mess
 
     class WatchKitDataManager: NSObject {
         
-        let wormhole = MMWormhole(applicationGroupIdentifier:"group.tooploox.com.Contacts", optionalDirectory:nil)
+        let contactClassName = "contact"
+
+        let wormhole = MMWormhole(applicationGroupIdentifier: "group.tooploox.com.Contacts", optionalDirectory: nil)
     
         func sendContact(contact: Contact) {
-            NSKeyedArchiver.setClassName("contact", forClass:Contact.self)
+            NSKeyedArchiver.setClassName(contactClassName, forClass: Contact.self)
             wormhole.passMessageObject(contact, identifier:contactClassName)
         }
     
         func readContact() -> Contact? {
-            NSKeyedUnarchiver.setClass(Contact.self, forClassName:"contact")
+            NSKeyedUnarchiver.setClass(Contact.self, forClassName: contactClassName)
             if let contact = wormhole.messageWithIdentifier(contactClassName) as? Contact {
                 return contact
             }
