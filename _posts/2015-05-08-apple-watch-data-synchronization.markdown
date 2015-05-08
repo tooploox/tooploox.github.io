@@ -1,3 +1,11 @@
+---
+layout: post
+title:  "Data synchronization between iOS app and WatchKit extension"
+date:   May 08, 2015
+author: mateusz-nadolski
+categories: swift iOS apple-watch
+---
+
 #Data synchronization between iOS app and WatchKit extension
 
 ###How does it work?
