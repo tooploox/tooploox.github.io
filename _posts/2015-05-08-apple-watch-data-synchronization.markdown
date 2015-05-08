@@ -2,6 +2,7 @@
 layout: post
 title:  "Data synchronization between iOS app and WatchKit extension"
 date:   May 08, 2015
+post-image: /images/posts/apple-watch-header.png
 author: mateusz-nadolski
 categories: swift iOS apple-watch
 ---
