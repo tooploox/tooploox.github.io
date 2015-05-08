@@ -105,4 +105,4 @@ Another great feature of MMWormhole library is ability to register object as lis
 
 And now when we run our iOS and WatchKit apps simultaneously we'll be able to see that contact details on Apple Watch are updated each time user enters contact details view on corresponding iOS app.
 
-If you have any questions feel free to drop a comment below. You can view the [source code on Github here](https://github.com/mateusznadolski/Contacts)
+If you have any questions feel free to drop a comment below. You can view the [source code on Github here](https://github.com/tooploox/apple-watch-communication-example)
