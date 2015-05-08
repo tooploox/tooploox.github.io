@@ -57,7 +57,7 @@ our Contact class must conform to NSCoding protocol thus we need to override the
 
 Also we need to specify unique keys used by a Contact object to encode or decode its instance variables.
 
-So we need to put this line of code before we try to send message through wormhole
+To do so, we need to put this line of code before we try to send message through wormhole
 
     NSKeyedArchiver.setClassName("Contact", forClass:Contact.self)
     
@@ -65,7 +65,7 @@ and this one before we try to read message from wormhole
     
     NSKeyedUnarchiver.setClass(Contact.self, forClassName:"Contact")
 
-Otherwise we'll receive a given error:
+Otherwise we'll receive the following error:
 
 > [NSKeyedUnarchiver decodeObjectForKey:]: cannot decode object of class (Contacts.Contact)'
 
