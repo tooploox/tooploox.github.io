@@ -14,8 +14,8 @@ layout: default
                 <div class="post-text">
                     <span class="date">{{ post.date | date: '%B %d, %Y' }}</span>
                     <h2>{{ post.title }}</h2>
-                    <div class="post-content">{{ post.content }}</div>
-                    <a href="{{ post.url | prepend: site.baseurl }}" class="continue">Continue reading</a>
+                    <p class="post-excerpt">{{ post.excerpt }}</p>
+                    <div class="post-footer"><a href="{{ post.url | prepend: site.baseurl }}" class="continue">Continue reading</a></div>
                 </div>
             </div>
         </div>
