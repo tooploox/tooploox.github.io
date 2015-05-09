@@ -6,9 +6,24 @@ post-image: /images/posts/android-sharing.png
 author: damian-walczak
 categories: android programming
 ---
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-laboris nisi ut aliquip ex ea commodo consequat.
+
+### Intro
+
+I bet you had a moment, when you needed to share something from your app. And if you didn't, at some point of your adventure with app development for Android, you'll get to that point.
+
+There is bunch of rules, that one should keep in mind when sharing content, some of them are [described in Android training](http://developer.android.com/training/sharing/send.html), other in [Intent](http://developer.android.com/reference/android/content/Intent.html) class docs. 
+
+The truth is, there are some of the apps out there, that follow [the contract](http://developer.android.com/reference/android/content/Intent.html#EXTRA_TEXT) introduced by Google, and there are [some](http://facebook.com/), that break it [with cold blood](https://developers.facebook.com/bugs/332619626816423).
+
+Regardless of reason, there are cases, where you'd like to filter out the apps, that will be displayed in share dialog. Or you'd like to write custom dialog. Anyway, you'd like to have some control over the sharing dialog behaviour.
+
+If that's the case, you're in correct place! :)
+
+
+### Show me the code!
+
+Yep, you're here for code (as we all know, the Internet is for [code](https://www.youtube.com/watch?v=eWEjvCRPrCo), right? ;))
+
  
 ```java
 private static Collection<ResolveInfo> findMatchingResolveInfo(
@@ -30,8 +45,3 @@ private static Collection<ResolveInfo> findMatchingResolveInfo(
     return matchingResInfo;
 }
 ```
-
-Duis aute irure dolor in reprehenderit in
-voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-non proident, sunt in culpa. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-eiusmod tempor incididunt ut labore et dolore magna aliqua. 
