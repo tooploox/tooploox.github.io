@@ -7,17 +7,17 @@ author: mateusz-nadolski
 categories: swift iOS apple-watch
 ---
 
-#Data synchronization between iOS app and WatchKit extension
+# Data synchronization between iOS app and WatchKit extension
 
-###How does it work?
+### How does it work?
 
 When you add a WatchKit app target to your existing project, Xcode creates 2 directories: WatchKit extension and WatchKit app. WatchKit extension runs on your iPhone, but in a separate sandbox than your iOS app though. WatchKit app contains only Storyboard and Resources. The data is synced between WatchKit app and WatchKit extension over Bluetooth Low Energy so it's a good practice to avoid sending big chunks of data between these two targets.
 
-###How to synchronize your data?
+### How to synchronize your data?
 
 There are several ways to send data between WatchKit extension and iOS app running on iPhone. After trying NSKeyedUnarchiver and NSUserDefaults I've come across a great open-source library called [MMWormhole](https://github.com/mutualmobile/MMWormhole) developed by folks at [MutualMobile](http://www.mutualmobile.com). It basically uses NSKeyedArchiver to write data to files which are written to the application's shared App Group. It also lets you register objects as listeners, so you get notified when new message is passed around.
 
-###Let's try it in practice!
+### Let's try it in practice!
 
 I've created a simple app called Contacts, which lets you browse, add and show details of contacts on the iPhone. Every time user enters the contact details view - corresponding contact details are displayed on the AppleWatch.
 
