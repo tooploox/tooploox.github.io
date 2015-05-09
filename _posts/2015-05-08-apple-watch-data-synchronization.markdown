@@ -1,12 +1,11 @@
 ---
 layout: post
 title:  "Data synchronization between iOS app and WatchKit extension"
-post-image: /images/posts/apple-watch-header.png
+post-image: /images/posts/apple-watch-data-synchronization-header.png
 author: mateusz-nadolski
-categories: swift iOS apple-watch
+categories: swift iOS apple-watch watchkit
+excerpt: "In this post, we will talk a bit about a simple way of synchronizing data between iOS mobile device and Apple Watch."
 ---
-
-# Data synchronization between iOS app and WatchKit extension
 
 ### How does it work?
 
@@ -20,7 +19,7 @@ There are several ways to send data between WatchKit extension and iOS app runni
 
 I've created a simple app called Contacts, which lets you browse, add and show details of contacts on the iPhone. Every time user enters the contact details view - corresponding contact details are displayed on the AppleWatch.
 
-![](/images/posts/apple-watch-1.png) ![](/images/posts/apple-watch-2.png) ![](/images/posts/apple-watch-3.png)
+![](/images/posts/apple-watch-data-synchronization-1.png) ![](/images/posts/apple-watch-data-synchronization-2.png) ![](/images/posts/apple-watch-data-synchronization-3.png)
 
 Take into account that you have to be a member of Apple Developer program to run and test out the demo project in Xcode. Here's a short guide on how to [configure your app to support App Groups](https://developer.apple.com/library/ios/documentation/General/Conceptual/ExtensibilityPG/ExtensionScenarios.html).
 
@@ -28,11 +27,11 @@ So we simply want to send Contact object. Here's how Contact model looks like:
 
 ```swift
 final class Contact: NSObject {
-    
+
     let firstName: String
     let lastName: String
     let phoneNumber: String
-    
+
     init(firstName: String, lastName: String, phoneNumber: String) {
         self.firstName = firstName
         self.lastName = lastName
@@ -50,7 +49,7 @@ init(coder aDecoder: NSCoder) {
     lastName = aDecoder.decodeObjectForKey(lastNameKey) as! String
     phoneNumber = aDecoder.decodeObjectForKey(phoneNumberKey) as! String
 }
-    
+
 func encodeWithCoder(aCoder: NSCoder) {
     aCoder.encodeObject(firstName, forKey: firstNameKey)
     aCoder.encodeObject(lastName, forKey: lastNameKey)
@@ -65,7 +64,7 @@ To do so, we need to put this line of code before we try to send message through
 ```swift
 NSKeyedArchiver.setClassName("Contact", forClass: Contact.self)
 ```
-    
+
 and this one before we try to read message from wormhole
 
 ```swift
@@ -74,7 +73,9 @@ NSKeyedUnarchiver.setClass(Contact.self, forClassName: "Contact")
 
 Otherwise we'll receive the following error:
 
-> [NSKeyedUnarchiver decodeObjectForKey:]: cannot decode object of class (Contacts.Contact)'
+```
+[NSKeyedUnarchiver decodeObjectForKey:]: cannot decode object of class (Contacts.Contact)'
+```
 
 And that's it. Now we're ready to use MMWormhole to pass around our custom class objects.
 
@@ -82,16 +83,16 @@ I've created a WatchKitDataManager class responsible of sending and reading mess
 
 ```swift
 class WatchKitDataManager: NSObject {
-        
+
     let contactClassName = "contact"
 
     let wormhole = MMWormhole(applicationGroupIdentifier: "group.tooploox.com.Contacts", optionalDirectory: nil)
-    
+
     func sendContact(contact: Contact) {
         NSKeyedArchiver.setClassName(contactClassName, forClass: Contact.self)
         wormhole.passMessageObject(contact, identifier:contactClassName)
     }
-    
+
     func readContact() -> Contact? {
         NSKeyedUnarchiver.setClass(Contact.self, forClassName: contactClassName)
         if let contact = wormhole.messageWithIdentifier(contactClassName) as? Contact {
@@ -116,4 +117,4 @@ wormhole.listenForMessageWithIdentifier(contactClassName) { (message) in
 
 And now when we run our iOS and WatchKit apps simultaneously we'll be able to see that contact details on Apple Watch are updated each time user enters contact details view on corresponding iOS app.
 
-If you have any questions feel free to drop a comment below. You can view the [source code on Github here](https://github.com/tooploox/apple-watch-communication-example)
+If you have any questions feel free to contact me via <mailto:mateusz.nadolski@tooploox.com>. You can view the [source code on Github here](https://github.com/tooploox/apple-watch-communication-example)
