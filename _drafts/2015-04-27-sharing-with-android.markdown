@@ -113,6 +113,6 @@ static Intent filterSendAction(PackageManager pm, Intent messageIntent, String..
 That's some basics, on how you can customize your sharing functionality.
 Using code from `findMatchingResolveInfo` with [`Intent.setPackage`](http://developer.android.com/reference/android/content/Intent.html#setPackage(java.lang.String)) method you can write completely custom share view.
 
-For more info please check our github sample project, containing really simple custom share view. That's it for now.
+For more info please check our [github sample project](https://github.com/tooploox/share-android-sample), containing really simple custom share view. That's it for now.
 Feel free to contact me if you find the post useful or you have some feedback regarding the content (especially if you find a bug in my sample project ;))
 
