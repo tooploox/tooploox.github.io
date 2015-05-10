@@ -2,7 +2,7 @@
 layout: post
 title:  "Sharing content on Android - made simple"
 date:   April 27, 2015
-post-image: /images/posts/android-sharing.png
+post-image: /images/posts/sharing-content-on-android---made-simple-header.png
 author: damian-walczak
 categories: android programming
 ---
@@ -24,9 +24,34 @@ If that's the case, you're in correct place! :)
 
 Yep, you're here for code (as we all know, the Internet is for [code](https://www.youtube.com/watch?v=eWEjvCRPrCo), right? ;))
 
+The most basic sharing intent code would look something like this:
+
+```java
+Intent sendIntent = new Intent(Intent.ACTION_SEND);
+sendIntent.putExtra(Intent.EXTRA_SUBJECT, shareContentSubject);
+sendIntent.putExtra(Intent.EXTRA_TEXT, shareContent);
+sendIntent.setType("text/plain");
+startActivity(Intent.createChooser(sendIntent, "Share with"));
+```
+
+Above code will show standard share dialog allowing user to pick appropriate app.
+
+What if you need to filter the apps out or share to distinct application (that e.g. don't have the SDK like [Facebook](https://developers.facebook.com/docs/android) or [Twitter](https://dev.twitter.com/twitter-kit/android)).
+
+Lets say we'd like to check if give application is installed. There are cases, when you need this kind of information.
+
+Having in mind, that Android has very strict rule, that package name can't be changed for the application, makes it possible to map interesting application to the package.
+
+To find package name for interesting app it's enough to search it in Google Play on your browser.
+
+![](/images/posts/sharing-content-on-android---made-simple-1.png)
+
+Here we see, that package name for twitter is `com.twitter.android`.
+
+Let's see the code, that will go through all installed apps on the device and check if given packages are avaliable. For further usage, we'll write it in a way, that it returns list of matching `ResolveInfo` objects.
  
 ```java
-private static Collection<ResolveInfo> findMatchingResolveInfo(
+static Collection<ResolveInfo> findMatchingResolveInfo(
                         PackageManager pm, 
                         Intent messageIntent, 
                         String... lookupPackages) {
@@ -45,3 +70,49 @@ private static Collection<ResolveInfo> findMatchingResolveInfo(
     return matchingResInfo;
 }
 ```
+
+Having this, we can introduce method to check if listed packages are installed
+
+```java
+static boolean isPackageInstalled(PackageManager pm, Intent messageIntent, String... lookupPackages) {
+    return !findMatchingResolveInfo(pm, messageIntent, lookupPackages).isEmpty();
+}
+```
+
+Methods are prepared in a way to pass several packages, as it's sometimes easier to use. So we checked, that our app is installed - how can we make it, so our `Intent` will be send to specific app?
+
+There are two ways to do so. If we have only one target app, we should use [`Intent.setPackage`](http://developer.android.com/reference/android/content/Intent.html#setPackage(java.lang.String)). On the other hand, if you'd like to show picker prioritizing given apps, you can use [`Intent.EXTRA_INITIAL_INTENTS`](http://developer.android.com/reference/android/content/Intent.html#EXTRA_INITIAL_INTENTS).
+
+Having in mind previous method implementented, we can do it like that:
+
+```java
+static Intent filterSendAction(PackageManager pm, Intent messageIntent, String... lookupPackages) {
+    Collection<ResolveInfo> matchingResInfo = findMatchingResolveInfo(pm, messageIntent, lookupPackages);
+
+    if (!matchingResInfo.isEmpty()) {
+        List<LabeledIntent> intentList = new ArrayList<>();
+        if (matchingResInfo.size() == 1) {
+            messageIntent.setPackage(matchingResInfo.iterator().next().activityInfo.packageName);
+        } else {
+            for (ResolveInfo resolveInfo : matchingResInfo) {
+                Intent intent = new Intent(messageIntent);
+                ActivityInfo activityInfo = resolveInfo.activityInfo;
+                intent.setComponent(new ComponentName(activityInfo.packageName, activityInfo.name));
+                intentList.add(new LabeledIntent(intent, activityInfo.packageName, resolveInfo.loadLabel(pm), resolveInfo.icon));
+            }
+            LabeledIntent[] extraIntents = intentList.toArray(new LabeledIntent[intentList.size()]);
+            messageIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, extraIntents);
+        }
+    }
+    return messageIntent;
+}
+```
+
+### What next?
+
+That's some basics, on how you can customize your sharing functionality.
+Using code from `findMatchingResolveInfo` with [`Intent.setPackage`](http://developer.android.com/reference/android/content/Intent.html#setPackage(java.lang.String)) method you can write completely custom share view.
+
+For more info please check our github sample project, containing really simple custom share view. That's it for now.
+Feel free to contact me if you find the post useful or you have some feedback regarding the content (especially if you find a bug in my sample project ;))
+
