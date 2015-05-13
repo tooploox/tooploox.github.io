@@ -95,10 +95,7 @@ class WatchKitDataManager: NSObject {
 
     func readContact() -> Contact? {
         NSKeyedUnarchiver.setClass(Contact.self, forClassName: contactClassName)
-        if let contact = wormhole.messageWithIdentifier(contactClassName) as? Contact {
-            return contact
-        }
-        return nil
+        return wormhole.messageWithIdentifier(contactClassName) as? Contact
     }
 }
 ```
