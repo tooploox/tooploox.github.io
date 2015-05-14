@@ -36,13 +36,11 @@
       margin-bottom: 1.7em;
       font-family: 'Montserrat-Regular', sans-serif;
     }
-    .post-content {
+    .post-excerpt {
       color: #7b7c83;
       font-size: 18px;
       line-height: 1.8;
-      margin: 0;
-      max-height: 125px;
-      overflow: hidden;
+      margin: 0 10px 0 0;
       text-overflow: ellipsis;
       p {
         margin: 0;
@@ -51,6 +49,7 @@
     }
     .continue {
       display: inline-block;
+      float: right;
       font-size: 14px;
       border: 2px solid #dbdbdb;
       color: #dcdcde;
@@ -59,9 +58,6 @@
       text-transform: uppercase;
       background-color: white;
       font-family: 'Montserrat-Regular', sans-serif;
-      position: absolute;
-      right: 20px;
-      bottom: -5px;
       cursor: pointer;
       &:hover, &:focus, &:active {
         color: #3e58c6;
