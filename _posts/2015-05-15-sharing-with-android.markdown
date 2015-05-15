@@ -9,7 +9,7 @@ categories: android programming
 
 ### Intro
 
-I bet you had a moment, when you needed to share something from your app. And if you didn't, at some point of your adventure with app development for Android, you'll get to that point.
+I bet you had a moment, when you needed to share something from your app. And if you didn't, at some point of your adventure with Android development, you'll get to that point.
 
 There is bunch of rules, that one should keep in mind when sharing content, some of them are [described in Android training](http://developer.android.com/training/sharing/send.html), other in [Intent](http://developer.android.com/reference/android/content/Intent.html) class docs. 
 
@@ -36,13 +36,13 @@ startActivity(Intent.createChooser(sendIntent, "Share with"));
 
 Above code will show standard share dialog allowing user to pick appropriate app.
 
-What if you need to filter the apps out or share to distinct application (that e.g. don't have the SDK like [Facebook](https://developers.facebook.com/docs/android) or [Twitter](https://dev.twitter.com/twitter-kit/android)).
+What if you need to filter out the apps or share to a distinct application (that e.g. don't have the SDK like [Facebook](https://developers.facebook.com/docs/android) or [Twitter](https://dev.twitter.com/twitter-kit/android)).
 
-Lets say we'd like to check if give application is installed. There are cases, when you need this kind of information.
+Lets say we'd like to check if a given application is installed. There are cases, when you need this kind of information.
 
-Having in mind, that Android has very strict rule, that package name can't be changed for the application, makes it possible to map interesting application to the package.
+Having in mind, that Android has a very strict rule, that package name can't be changed for the application, makes it possible to map the application in question to the package.
 
-To find package name for interesting app it's enough to search it in Google Play on your browser.
+To find package name for the app, it's enough to search it in Google Play on your browser.
 
 ![](/images/posts/sharing-content-on-android---made-simple-1.png)
 
@@ -67,7 +67,7 @@ static Collection<ResolveInfo> findMatchingResolveInfo(PackageManager pm, Intent
 }
 ```
 
-Having this, we can introduce method to check if listed packages are installed
+Having this, we can introduce a method to check if the listed packages are installed:
 
 ```java
 static boolean isPackageInstalled(PackageManager pm, Intent messageIntent, String... lookupPackages) {
@@ -75,11 +75,11 @@ static boolean isPackageInstalled(PackageManager pm, Intent messageIntent, Strin
 }
 ```
 
-Methods are prepared in a way to pass several packages, as it's sometimes easier to use. So we checked, that our app is installed - how can we make it, so our `Intent` will be send to specific app?
+Methods are prepared in a way to pass several packages, as it's sometimes easier to use. So, we checked that our app is installed; how can we make it, so our `Intent` will be send to specific app?
 
-There are two ways to do so. If we have only one target app, we should use [`Intent.setPackage`](http://developer.android.com/reference/android/content/Intent.html#setPackage(java.lang.String)). On the other hand, if you'd like to show picker prioritizing given apps, you can use [`Intent.EXTRA_INITIAL_INTENTS`](http://developer.android.com/reference/android/content/Intent.html#EXTRA_INITIAL_INTENTS).
+There are two ways to do so. If we have only one target app, we should use [`Intent.setPackage`](http://developer.android.com/reference/android/content/Intent.html#setPackage(java.lang.String)). On the other hand, if you'd like to show a picker prioritizing given apps, you can use [`Intent.EXTRA_INITIAL_INTENTS`](http://developer.android.com/reference/android/content/Intent.html#EXTRA_INITIAL_INTENTS).
 
-Having in mind previous method implementented, we can do it like that:
+Having in mind the previous method implementented, we can do it like that:
 
 ```java
 static Intent filterSendAction(PackageManager pm, Intent messageIntent, String... lookupPackages) {
@@ -106,8 +106,8 @@ static Intent filterSendAction(PackageManager pm, Intent messageIntent, String..
 
 ### What next?
 
-That's some basics, on how you can customize your sharing functionality.
-Using code from `findMatchingResolveInfo` with [`Intent.setPackage`](http://developer.android.com/reference/android/content/Intent.html#setPackage(java.lang.String)) method you can write completely custom share view.
+Those are the basics of how you can customize your sharing functionality.
+Using the code from `findMatchingResolveInfo` with [`Intent.setPackage`](http://developer.android.com/reference/android/content/Intent.html#setPackage(java.lang.String)) method you can write a completely custom share view.
 
 For more info please check our [github sample project](https://github.com/tooploox/share-android-sample), containing really simple custom share view. That's it for now.
 Feel free to contact me if you find the post useful or you have some feedback regarding the content (especially if you find a bug in my sample project ;))
