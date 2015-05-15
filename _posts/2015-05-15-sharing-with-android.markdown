@@ -13,11 +13,11 @@ I bet you had a moment, when you needed to share something from your app. And if
 
 There is bunch of rules, that one should keep in mind when sharing content, some of them are [described in Android training](http://developer.android.com/training/sharing/send.html), other in [Intent](http://developer.android.com/reference/android/content/Intent.html) class docs. 
 
-The truth is, there are some of the apps out there, that follow [the contract](http://developer.android.com/reference/android/content/Intent.html#EXTRA_TEXT) introduced by Google, and there are [some](http://facebook.com/), that break it [with cold blood](https://developers.facebook.com/bugs/332619626816423).
+The truth is, some apps out there, that follow [the contract](http://developer.android.com/reference/android/content/Intent.html#EXTRA_TEXT) introduced by Google, and there are [some](http://facebook.com/), that break it [with cold blood](https://developers.facebook.com/bugs/332619626816423).
 
-Regardless of reason, there are cases, where you'd like to filter out the apps, that will be displayed in share dialog. Or you'd like to write custom dialog. Anyway, you'd like to have some control over the sharing dialog behaviour.
+Regardless of the reason, there are cases, where you'd like to filter out the apps, that will be displayed in share dialog. Or you'd like to write custom dialog. Anyway, you'd like to have some control over the sharing dialog behaviour.
 
-If that's the case, you're in correct place! :)
+If that's the case, you're in the right place! :)
 
 
 ### Show me the code!
@@ -34,7 +34,7 @@ sendIntent.setType("text/plain");
 startActivity(Intent.createChooser(sendIntent, "Share with"));
 ```
 
-Above code will show standard share dialog allowing user to pick appropriate app.
+Above code will show standard share dialog allowing user to pick the appropriate app.
 
 What if you need to filter out the apps or share to a distinct application (that e.g. don't have the SDK like [Facebook](https://developers.facebook.com/docs/android) or [Twitter](https://dev.twitter.com/twitter-kit/android)).
 
