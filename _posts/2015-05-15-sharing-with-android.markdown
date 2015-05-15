@@ -1,9 +1,11 @@
 ---
 layout: post
 title:  "Sharing content on Android - made simple"
-date:   April 27, 2015
+date:   May 15, 2015
 post-image: /images/posts/sharing-content-on-android---made-simple-header.png
 author: damian-walczak
+excerpt: I bet you had a moment, when you needed to share something from your app. And if you didn't, at some point of your adventure with Android development, you'll get to that point.
+
 categories: android programming
 ---
 
