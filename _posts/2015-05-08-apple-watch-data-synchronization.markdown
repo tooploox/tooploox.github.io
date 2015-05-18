@@ -4,8 +4,10 @@ title:  "Data synchronization between iOS app and WatchKit extension"
 post-image: /images/posts/apple-watch-data-synchronization-header.png
 author: mateusz-nadolski
 categories: swift iOS apple-watch watchkit
-excerpt: "In this post, we will talk a bit about a simple way of synchronizing data between iOS mobile device and Apple Watch."
+excerpt: "As we work with our partners on Apple Watch support, I thought that I'd share some tips on Apple Watch development."
 ---
+
+As we work with our partners on Apple Watch support, I thought that I'd share some tips on Apple Watch development.
 
 ### How does it work?
 
