@@ -104,7 +104,7 @@ static Intent filterSendAction(PackageManager pm, Intent messageIntent, String..
 }
 ```
 
-### What next?
+### What's next?
 
 Those are the basics of how you can customize your sharing functionality.
 Using the code from `findMatchingResolveInfo` with [`Intent.setPackage`](http://developer.android.com/reference/android/content/Intent.html#setPackage(java.lang.String)) method you can write a completely custom share view.
