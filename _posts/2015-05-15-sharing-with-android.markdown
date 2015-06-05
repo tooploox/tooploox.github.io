@@ -13,7 +13,7 @@ I bet you had a moment, when you needed to share something from your app. And if
 
 There is bunch of rules, that one should keep in mind when sharing content. Some of them are [described in Android training](http://developer.android.com/training/sharing/send.html), other in [Intent](http://developer.android.com/reference/android/content/Intent.html) class docs. 
 
-The truth is, some apps out there follow [the contract](http://developer.android.com/reference/android/content/Intent.html#EXTRA_TEXT) introduced by Google, but [others](http://facebook.com/) break it [with cold blood](https://developers.facebook.com/bugs/332619626816423).
+The truth is, some apps out there follow [the contract](http://developer.android.com/reference/android/content/Intent.html#EXTRA_TEXT) introduced by Google, but [others](http://facebook.com/) break it [in cold blood](https://developers.facebook.com/bugs/332619626816423).
 
 Regardless of the reason, there are cases, where you'd like to filter out the apps, that will be displayed in share dialog. Or you'd like to write custom dialog. Anyway, you'd like to have some control over the sharing dialog behaviour.
 
