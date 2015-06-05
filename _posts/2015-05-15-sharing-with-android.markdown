@@ -9,11 +9,11 @@ categories: android programming
 
 ### Intro
 
-I bet you had a moment, when you needed to share something from your app. And if you didn't, at some point of your adventure with Android development, you'll get to that point.
+I bet you had a moment, when you needed to share something from your app. And if you didn't, trust me, you'll get there eventually.
 
-There is bunch of rules, that one should keep in mind when sharing content, some of them are [described in Android training](http://developer.android.com/training/sharing/send.html), other in [Intent](http://developer.android.com/reference/android/content/Intent.html) class docs. 
+There is bunch of rules, that one should keep in mind when sharing content. Some of them are [described in Android training](http://developer.android.com/training/sharing/send.html), other in [Intent](http://developer.android.com/reference/android/content/Intent.html) class docs. 
 
-The truth is, some apps out there, that follow [the contract](http://developer.android.com/reference/android/content/Intent.html#EXTRA_TEXT) introduced by Google, and there are [some](http://facebook.com/), that break it [with cold blood](https://developers.facebook.com/bugs/332619626816423).
+The truth is, some apps out there follow [the contract](http://developer.android.com/reference/android/content/Intent.html#EXTRA_TEXT) introduced by Google, but [others](http://facebook.com/) break it [with cold blood](https://developers.facebook.com/bugs/332619626816423).
 
 Regardless of the reason, there are cases, where you'd like to filter out the apps, that will be displayed in share dialog. Or you'd like to write custom dialog. Anyway, you'd like to have some control over the sharing dialog behaviour.
 
@@ -22,7 +22,7 @@ If that's the case, you're in the right place! :)
 
 ### Show me the code!
 
-Yep, you're here for code (as we all know, the Internet is for [code](https://www.youtube.com/watch?v=eWEjvCRPrCo), right? ;))
+Yep, you're here for the code (as we all know, the Internet is for [code](https://www.youtube.com/watch?v=eWEjvCRPrCo), right? ;))
 
 The most basic sharing intent code would look something like this:
 
@@ -36,13 +36,13 @@ startActivity(Intent.createChooser(sendIntent, "Share with"));
 
 Above code will show standard share dialog allowing user to pick the appropriate app.
 
-What if you need to filter out the apps or share to a distinct application (that e.g. don't have the SDK like [Facebook](https://developers.facebook.com/docs/android) or [Twitter](https://dev.twitter.com/twitter-kit/android)).
+What if you need to filter out the apps or share to a distinct application (that e.g. don't have the SDK like [Facebook](https://developers.facebook.com/docs/android) or [Twitter](https://dev.twitter.com/twitter-kit/android))?
 
-Lets say we'd like to check if a given application is installed. There are cases, when you need this kind of information.
+Let's say we'd like to check if a given application is installed. There are cases, when you need this kind of information.
 
 Having in mind, that Android has a very strict rule, that package name can't be changed for the application, makes it possible to map the application in question to the package.
 
-To find package name for the app, it's enough to search it in Google Play on your browser.
+To find the package name for the app, it's enough to search for it in Google Play on your browser.
 
 ![](/images/posts/sharing-content-on-android---made-simple-1.png)
 
@@ -75,7 +75,7 @@ static boolean isPackageInstalled(PackageManager pm, Intent messageIntent, Strin
 }
 ```
 
-Methods are prepared in a way to pass several packages, as it's sometimes easier to use. So, we checked that our app is installed; how can we make it, so our `Intent` will be send to specific app?
+Methods are prepared in a way to pass several packages, as it's sometimes easier to use. So, we checked that our app is installed; how can we make it, so our `Intent` will be sent to specific app?
 
 There are two ways to do so. If we have only one target app, we should use [`Intent.setPackage`](http://developer.android.com/reference/android/content/Intent.html#setPackage(java.lang.String)). On the other hand, if you'd like to show a picker prioritizing given apps, you can use [`Intent.EXTRA_INITIAL_INTENTS`](http://developer.android.com/reference/android/content/Intent.html#EXTRA_INITIAL_INTENTS).
 
