@@ -77,7 +77,7 @@ static boolean isPackageInstalled(PackageManager pm, Intent messageIntent, Strin
 }
 ```
 
-Methods are prepared in a way to pass several packages, as it's sometimes easier to use. So, we checked that our app is installed; how can we make it, so our `Intent` will be sent to specific app?
+Methods are prepared in a way to pass several packages, as it's sometimes easier to use. So, we checked that our app is installed; how can we make it, so our `Intent` will be sent to a specific app?
 
 There are two ways to do so. If we have only one target app, we should use [`Intent.setPackage`](http://developer.android.com/reference/android/content/Intent.html#setPackage(java.lang.String)). On the other hand, if you'd like to show a picker prioritizing given apps, you can use [`Intent.EXTRA_INITIAL_INTENTS`](http://developer.android.com/reference/android/content/Intent.html#EXTRA_INITIAL_INTENTS).
 
